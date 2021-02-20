@@ -1,0 +1,98 @@
+﻿body.Login_Body_Div {
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Login_Div {
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-family: system-ui;
+}
+
+Inputs_Divs {
+    padding: 4px;
+}
+
+input.Input_Field {
+    height: 25px;
+    width: 180px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+    outline: none;
+    padding-left: 5px;
+}
+
+.SignIn_Div {
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button.SignIn_Button {
+    background: #1f2dd4db;
+    color: white;
+    border: 1px solid;
+    height: 27px;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+
+.Login_Main_Div {
+    box-shadow: 0 9px 10px 0 rgb(0 0 0 / 10%);
+    transition: 0.5s;
+    width: 40%;
+    height: 60%;
+    background: #987568;
+}
+
+    .Login_Main_Div:hover {
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    }
+
+.Login_Inputs_Div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Inputs_Divs {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-row-gap: 50px;
+    grid-column-gap: 10px;
+    padding: 10px;
+}
+
+.container {
+    padding: 16px;
+}
+
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+button.cancelbtn {
+    background: red;
+    border: #ad6170;
+    justify-content: normal;
+}
+
+.Disable_SignIn_Button {
+    background: #1f2dd4db;
+    color: white;
+    border: 1px solid;
+    height: 27px;
+    border-radius: 4px;
+    outline: none;
+    cursor: none;
+}
