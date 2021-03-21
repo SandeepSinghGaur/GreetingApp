@@ -7,27 +7,66 @@
 <body>
     <br><br>
     <div class="container">
-        <button class="btn btn-info"><span class="glyphicon glyphicon-user"></span>  Add Employee</button>
+        <button class="btn btn-info" onclick="location.href='Registration.html'" ><span class="glyphicon glyphicon-user"></span>  Add Employee</button>
         <br><br><br><br>
-        <h1>No record found !!</h1>
-        <table class="table table-striped">
-            <thead>
-            <th>First Name </th>
-            <th>Last Name </th>
-            <th>Email</th>
-            <th>Edit</th>
-            <th>Delete</th>
-            </thead>
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td><button class="btn btn-info"><span class="glyphicon glyphicon-edit"></span></button></span></td>
-                    <td><button class="btn btn-info"><span class="glyphicon glyphicon-remove"></span></button></td>
+        <div class="Display_Table">
+            <table style="width:100%" id="allEmployeeTable">
+                <tr class="Table_Row">
+                    <th style="text-align: left">Employee Name</th>
+                    <th style="text-align: left">Email ID</th>
+                    <th style="text-align: left">Phone Number</th>
+                    <th style="text-align: left">Edit</th>
+                    <th style="text-align: left">Delete</th>
                 </tr>
-            </tbody>
-        </table>
+            </table>
+        </div>
     </div>
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.2.0.js"></script>
+<script type="text/javascript">
+    $.ajax(
+        {
+            type: 'GET',
+            url: 'https://localhost:44326/api/GreetingApp/GetAllEmployee',
+            contentType: 'application/json',
+            success: function (data) {
+                console.log(data.data);
+                $.each(data.data, function (key, value) {
+                    var EmpName = value.firstName;
+                    var EmailID = value.email;
+                    var MobileNumber = value.mobile;
+                    $('<tr><td>' + EmpName + '<td>' + EmailID + '<td>' + MobileNumber +
+                        '<td><form action="/html/EditPage.html" ><button id=' + value.id + ' onClick="UpdateEmployee(id)"  class="Edit-Button"><img src="/Images/edit.png" style="width:20px; height:20px;"/> ' +
+                        '<td><form ><button id=' + value.id + ' onClick="DeleteEmployee(id)"  class="Delete-Button"><img src="/Images/delete.png" style="width:20px;height:20px;"/>')
+                        .appendTo("#allEmployeeTable");
+
+                })
+
+            },
+            error: function () {
+                console.log("error");
+            }
+
+        })
+    function DeleteEmployee(id) {
+        console.log(id);
+        var empID = id;
+        $.ajax(
+            {
+                type: 'DELETE',
+                url: 'https://localhost:44326/api/GreetingApp/DeleteEmployee/' + empID,
+                //contentType: 'application/json',
+                //data=empID,
+                success: function () {
+
+                    alert('Employee Deleted successfully');
+                    location.reload();
+                },
+                error: function () {
+                    console.log("error");
+                }
+
+            })
+    }
+</script>

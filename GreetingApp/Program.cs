@@ -12,6 +12,10 @@ namespace GreetingApp
 {
     public class Program
     {
+        /// <summary>
+        /// create a host for the web application.
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             CreateWebHostBuilder(args).Build().Run();
